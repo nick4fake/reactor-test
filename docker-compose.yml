@@ -9,10 +9,14 @@ services:
     - MYSQL_RANDOM_ROOT_PASSWORD=yes
     volumes:
     - reactor.db:/var/lib/mysql
+    ports:
+    - "3306:3306"
   reactor.app:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+    - "8080:80"
     links:
     - reactor.db
 
