@@ -1,0 +1,22 @@
+version: '3'
+services:
+  reactor.db:
+    image: mariadb:latest
+    environment:
+    - MYSQL_DATABASE=reactor
+    - MYSQL_USER=reactor
+    - MYSQL_PASSWORD=reactor
+    - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    volumes:
+    - reactor.db:/var/lib/mysql
+  reactor.app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+    - reactor.db
+
+volumes:
+  reactor.db:
+    driver: local
+
