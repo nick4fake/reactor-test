@@ -1,21 +1,26 @@
-plugins {
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
-}
-
 apply plugin: 'java'
 apply plugin: 'groovy'
 
 repositories {
-    jcenter()
+    // jcenter()
+    mavenCentral()
+    maven {
+        url "http://repo.spring.io/milestone/"
+    }
 }
 
 dependencies {
     // The production code uses the SLF4J logging API at compile time
-    compile 'org.slf4j:slf4j-api:1.7.22'
+    compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'org.codehaus.groovy:groovy-all:2.4.11'
+    // Database-related stuff
+    compile 'mysql:mysql-connector-java:5.1.43'
     compile 'org.jooq:jooq:3.9.5'
+    compile 'org.jooq:jooq-codegen:3.9.5'
 
-    compile("org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE")
+    compile 'org.springframework:spring-core:5.0.0.RC3'
+    compile 'org.springframework:spring-beans:5.0.0.RC3'
+    compile 'org.springframework:spring-context:5.0.0.RC3'
 
     testCompile 'junit:junit:4.12'
 }

@@ -2,7 +2,7 @@ import org.junit.Test
 
 class TestGroovy {
     @Test
-    void testIntegersList() {
+    void test() {
         assert true
     }
 }
